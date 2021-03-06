@@ -12,7 +12,7 @@
 
 / {
 	model = "NCX1 MK1";
-	compatible = "microchip,sam9x60ek", "microchip,sam9x60", "atmel,at91sam9";
+	compatible = "microchip,sam9x60ek", "microchip,sam9x60", "atmel,at91sam9", "microchip,ncx1-mk1", "microchip,ncx1_mk1";
 
 	aliases {
 		i2c0 = &i2c0;
