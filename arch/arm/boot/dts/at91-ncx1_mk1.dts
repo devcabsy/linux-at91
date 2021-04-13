@@ -96,17 +96,17 @@
 
 		red {
 			label = "red";
-			gpios = <&pioB 11 GPIO_ACTIVE_HIGH>;
+			gpios = <&pioB 11 GPIO_ACTIVE_LOW>;
 		};
 
 		green {
 			label = "green";
-			gpios = <&pioB 12 GPIO_ACTIVE_HIGH>;
+			gpios = <&pioB 12 GPIO_ACTIVE_LOW>;
 		};
 
 		blue {
 			label = "blue";
-			gpios = <&pioB 13 GPIO_ACTIVE_HIGH>;
+			gpios = <&pioB 13 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "heartbeat";
 		};
 	};
@@ -117,7 +117,7 @@
 
 		syshb {
 			label = "syshb";
-			gpios = <&pioC 2 GPIO_ACTIVE_HIGH>;
+			gpios = <&pioC 2 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "heartbeat";
 		};
 
@@ -155,7 +155,7 @@
 	pinctrl-0 = <&pinctrl_classd_default>;
 	atmel,pwm-type = "diff";
 	atmel,non-overlap-time = <10>;
-	status = "okay";
+	status = "disabled";
 };
 
 &dbgu {
@@ -617,7 +617,7 @@
 &qspi {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_qspi>;
-	status = "okay"; /* Conflict with i2s. */
+	status = "disabled"; /* Conflict with i2s. */
 
 	flash@0 {
 		#address-cells = <1>;
@@ -699,11 +699,11 @@
 	atmel,vbus-gpio = <0
 			   &pioD 15 GPIO_ACTIVE_HIGH
 			   &pioD 16 GPIO_ACTIVE_HIGH>;
-	status = "okay";
+	status = "disabled";
 };
 
 &usb2 {
-	status = "okay";
+	status = "disabled";
 };
 
 &watchdog {
