@@ -96,17 +96,17 @@
 
 		red {
 			label = "red";
-			gpios = <&pioB 11 GPIO_ACTIVE_LOW>;
+			gpios = <&pioB 11 GPIO_ACTIVE_HIGH>;
 		};
 
 		green {
 			label = "green";
-			gpios = <&pioB 12 GPIO_ACTIVE_LOW>;
+			gpios = <&pioB 12 GPIO_ACTIVE_HIGH>;
 		};
 
 		blue {
 			label = "blue";
-			gpios = <&pioB 13 GPIO_ACTIVE_LOW>;
+			gpios = <&pioB 13 GPIO_ACTIVE_HIGH>;
 			linux,default-trigger = "heartbeat";
 		};
 	};
@@ -135,7 +135,7 @@
 	vref-supply = <&vdd1_3v3>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_adc_default &pinctrl_adtrg_default>;
-	status = "okay";
+	status = "disabled";
 };
 
 &can0 {
@@ -593,7 +593,7 @@
 &pwm0 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pwm0_0 &pinctrl_pwm0_1 &pinctrl_pwm0_2 &pinctrl_pwm0_3>;
-	status = "ok"; /* Conflict with leds. */
+	status = "okay"; /* Conflict with leds.  ok?*/
 };
 
 &sdmmc0 {
