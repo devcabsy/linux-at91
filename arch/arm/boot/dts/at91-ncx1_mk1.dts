@@ -247,6 +247,7 @@
 		i2c-digital-filter;
 		i2c-digital-filter-width-ns = <35>;
 		status = "okay";
+		clock-frequency = <400000>;
 
 		eeprom@53 {
 			compatible = "atmel,24c32";
@@ -320,6 +321,7 @@
 		i2c-digital-filter;
 		i2c-digital-filter-width-ns = <35>;
 		status = "okay";
+		clock-frequency = <400000>;
 
 		gpio_exp: mcp23008@20 {
 			compatible = "microchip,mcp23008";
