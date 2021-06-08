@@ -351,9 +351,10 @@
 		status = "okay";
 		clock-frequency = <1000000>;
 
-		gpio_exp: mcp23008@20 {
-			compatible = "microchip,mcp23008";
-			reg = <0x20>;
+		temperature-sensor@4c {
+		compatible = "lm75";
+		reg = <0x4c>;
+		status = "okay";
 		};
 	};
 };
