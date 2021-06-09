@@ -261,21 +261,30 @@
 };
 
 &flx4 {
-	atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_SPI>;
-	status = "disabled";
+	atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_TWI>;
+	status = "okay";
 
-	spi0: spi@400 {
-		compatible = "microchip,sam9x60-spi", "atmel,at91rm9200-spi";
-		reg = <0x400 0x200>;
+		i2c2: i2c@600 {
+		compatible = "microchip,sam9x60-i2c";
+		reg = <0x600 0x200>;
 		interrupts = <13 IRQ_TYPE_LEVEL_HIGH 7>;
+		#address-cells = <1>;
+		#size-cells = <0>;
 		clocks = <&pmc PMC_TYPE_PERIPHERAL 13>;
-		clock-names = "spi_clk";
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_flx4_default>;
 		atmel,fifo-size = <16>;
-		#address-cells = <1>;
-		#size-cells = <0>;
-		status = "disabled";
+		i2c-analog-filter;
+		i2c-digital-filter;
+		i2c-digital-filter-width-ns = <35>;
+		status = "okay";
+		clock-frequency = <1000000>;
+
+		temperature-sensor@4c {
+		compatible = "lm75";
+		reg = <0x4c>;
+		status = "okay";
+		};
 	};
 };
 
@@ -497,12 +506,18 @@
 				 AT91_PIOA 1 AT91_PERIPH_A AT91_PINCTRL_PULL_UP>;
 		};
 
-		pinctrl_flx4_default: flx4_spi {
+		// pinctrl_flx4_default: flx4_spi { //original
+		// 	atmel,pins =
+		// 		<AT91_PIOA 11 AT91_PERIPH_A AT91_PINCTRL_NONE
+		// 		 AT91_PIOA 12 AT91_PERIPH_A AT91_PINCTRL_NONE
+		// 		 AT91_PIOA 13 AT91_PERIPH_A AT91_PINCTRL_NONE
+		// 		 AT91_PIOA 14 AT91_PERIPH_A AT91_PINCTRL_NONE>;
+		// };
+
+		pinctrl_flx4_default: flx4_twi {
 			atmel,pins =
-				<AT91_PIOA 11 AT91_PERIPH_A AT91_PINCTRL_NONE
-				 AT91_PIOA 12 AT91_PERIPH_A AT91_PINCTRL_NONE
-				 AT91_PIOA 13 AT91_PERIPH_A AT91_PINCTRL_NONE
-				 AT91_PIOA 14 AT91_PERIPH_A AT91_PINCTRL_NONE>;
+				<AT91_PIOA 11 AT91_PERIPH_A AT91_PINCTRL_PULL_UP
+				 AT91_PIOA 12 AT91_PERIPH_A AT91_PINCTRL_PULL_UP>;
 		};
 
 		pinctrl_flx5_default: flx_uart {
@@ -519,11 +534,11 @@
 				 AT91_PIOA 31 AT91_PERIPH_A AT91_PINCTRL_PULL_UP>;
 		};
 
-		pinctrl_flx7_default: flx7_twi {
-			atmel,pins =
-				<AT91_PIOC 0 AT91_PERIPH_C AT91_PINCTRL_PULL_UP
-				 AT91_PIOC 1 AT91_PERIPH_C AT91_PINCTRL_PULL_UP>;
-		};
+		// pinctrl_flx7_default: flx7_twi {
+		// 	atmel,pins =
+		// 		<AT91_PIOC 0 AT91_PERIPH_C AT91_PINCTRL_PULL_UP
+		// 		 AT91_PIOC 1 AT91_PERIPH_C AT91_PINCTRL_PULL_UP>;
+		// };
 	};
 
 	classd {
