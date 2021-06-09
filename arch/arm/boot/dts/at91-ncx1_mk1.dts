@@ -278,7 +278,7 @@
 		i2c-digital-filter;
 		i2c-digital-filter-width-ns = <35>;
 		status = "okay";
-		clock-frequency = <1000000>;
+		clock-frequency = <1200000>;
 
 		temperature-sensor@4c {
 		compatible = "lm75";
