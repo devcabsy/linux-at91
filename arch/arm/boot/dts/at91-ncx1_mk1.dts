@@ -83,9 +83,16 @@
 		pinctrl-0 = <&pinctrl_key_gpio_default>;
 		status = "okay";
 
-		sw1 {
-			label = "SW1";
-			gpios = <&pioD 18 GPIO_ACTIVE_LOW>;
+		pir2 {
+			label = "pir2";
+			gpios = <&pioC 10 GPIO_ACTIVE_LOW>;
+			linux,code=<KEY_PROG1>;
+			wakeup-source;
+		};
+
+		pir {
+			label = "pir";
+			gpios = <&pioC 14 GPIO_ACTIVE_LOW>;
 			linux,code=<KEY_PROG1>;
 			wakeup-source;
 		};
@@ -603,7 +610,9 @@
 
 	gpio_keys {
 		pinctrl_key_gpio_default: pinctrl_key_gpio {
-			atmel,pins = <AT91_PIOD 18 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
+			atmel,pins = 
+			<AT91_PIOC 10 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>
+			<AT91_PIOD 14 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
 		};
 	};
 
