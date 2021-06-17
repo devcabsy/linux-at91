@@ -250,9 +250,9 @@
 		status = "okay";
 		clock-frequency = <400000>;
 
-		eeprom@53 {
-			compatible = "atmel,24c32";
-			reg = <0x53>;
+		eeprom@5a {
+			compatible = "atmel,at24mac";
+			reg = <0x5a>;
 			pagesize = <16>;
 			size = <128>;
 			status = "okay";
