@@ -136,7 +136,7 @@
 	vref-supply = <&vdd1_3v3>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_adc_default &pinctrl_adtrg_default>;
-	status = "disabled";
+	status = "okay";
 };
 
 &can0 {
