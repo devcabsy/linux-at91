@@ -89,28 +89,35 @@
 			linux,code=<KEY_PROG1>;
 			wakeup-source;
 		};
-	};
 
-	leds {
-		compatible = "gpio-leds";
-		status = "disabled"; /* Conflict with pwm0. */
-
-		red {
-			label = "red";
-			gpios = <&pioB 11 GPIO_ACTIVE_HIGH>;
-		};
-
-		green {
-			label = "green";
-			gpios = <&pioB 12 GPIO_ACTIVE_HIGH>;
-		};
-
-		blue {
-			label = "blue";
-			gpios = <&pioB 13 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "heartbeat";
+		rsbot {
+			label = "rsbot";
+			gpios = <&pioD 18 GPIO_ACTIVE_LOW>;
+			linux,code=<KEY_PROG1>;
+			wakeup-source;
 		};
 	};
+
+	// leds {
+	// 	compatible = "gpio-leds";
+	// 	status = "disabled"; /* Conflict with pwm0. */
+
+	// 	red {
+	// 		label = "red";
+	// 		gpios = <&pioB 11 GPIO_ACTIVE_HIGH>;
+	// 	};
+
+	// 	green {
+	// 		label = "green";
+	// 		gpios = <&pioB 12 GPIO_ACTIVE_HIGH>;
+	// 	};
+
+	// 	blue {
+	// 		label = "blue";
+	// 		gpios = <&pioB 13 GPIO_ACTIVE_HIGH>;
+	// 		linux,default-trigger = "heartbeat";
+	// 	};
+	// };
 
 	jolp {
 		compatible = "gpio-leds";
@@ -561,19 +568,19 @@
 
 	pwm0 {
 		pinctrl_pwm0_0: pwm0_0 {
-			atmel,pins = <AT91_PIOB 11 AT91_PERIPH_B AT91_PINCTRL_NONE>;
+			atmel,pins = <AT91_PIOC 18 AT91_PERIPH_B AT91_PINCTRL_NONE>;
 		};
 
 		pinctrl_pwm0_1: pwm0_1 {
-			atmel,pins = <AT91_PIOB 12 AT91_PERIPH_B AT91_PINCTRL_NONE>;
+			atmel,pins = <AT91_PIOC 19 AT91_PERIPH_B AT91_PINCTRL_NONE>;
 		};
 
 		pinctrl_pwm0_2: pwm0_2 {
-			atmel,pins = <AT91_PIOB 13 AT91_PERIPH_B AT91_PINCTRL_NONE>;
+			atmel,pins = <AT91_PIOC 20 AT91_PERIPH_B AT91_PINCTRL_NONE>;
 		};
 
 		pinctrl_pwm0_3: pwm0_3 {
-			atmel,pins = <AT91_PIOB 14 AT91_PERIPH_B AT91_PINCTRL_NONE>;
+			atmel,pins = <AT91_PIOC 21 AT91_PERIPH_B AT91_PINCTRL_NONE>;
 		};
 	};
 
@@ -605,13 +612,16 @@
 		pinctrl_key_gpio_default: pinctrl_key_gpio {
 			atmel,pins = <AT91_PIOC 10 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
 		};
-	};
-
-	usb0 {
-		pinctrl_usba_vbus: usba_vbus {
-			atmel,pins = <AT91_PIOB 16 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
+		pinctrl_key_gpio_default: pinctrl_key_gpio {
+			atmel,pins = <AT91_PIOD 18 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
 		};
 	};
+
+	// usb0 {
+	// 	pinctrl_usba_vbus: usba_vbus {
+	// 		atmel,pins = <AT91_PIOB 16 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
+	// 	};
+	// };
 }; /* pinctrl */
 
 &pwm0 {
@@ -711,12 +721,12 @@
 	};
 };
 
-&usb0 {
-	atmel,vbus-gpio = <&pioB 16 GPIO_ACTIVE_HIGH>;
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_usba_vbus>;
-	status = "okay";
-};
+// &usb0 {
+// 	atmel,vbus-gpio = <&pioB 16 GPIO_ACTIVE_HIGH>;
+// 	pinctrl-names = "default";
+// 	pinctrl-0 = <&pinctrl_usba_vbus>;
+// 	status = "okay";
+// };
 
 &usb1 {
 	num-ports = <3>;
